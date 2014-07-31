@@ -9,9 +9,10 @@ namespace NumberGuessingGame.Models
 
     public class SecretNumber
     {
-        private int? _number;
         const int MaxNumberOfGuesses = 7;
 
+        private int? _number;
+        
         public bool CanMakeGuess
         {
             get
@@ -19,6 +20,7 @@ namespace NumberGuessingGame.Models
                 throw new NotImplementedException();
             }
         }
+
         public int Count
         {
             get
@@ -26,6 +28,7 @@ namespace NumberGuessingGame.Models
                 throw new NotImplementedException();
             }
         }
+
         public IList<GuessedNumber> GuessedNumber 
         {
             get
@@ -33,6 +36,7 @@ namespace NumberGuessingGame.Models
                 throw new NotImplementedException();
             } 
         }
+
         public GuessedNumber LastGuessedNumber 
         {
             get
@@ -40,11 +44,14 @@ namespace NumberGuessingGame.Models
                 throw new NotImplementedException();
             }
         }
+
         public int? Number { get; set; }
         
         public void Initialize()
         {
-
+            // Randomizing a number between 1 and 100.
+            Random randomNumber = new Random();
+            _number = randomNumber.Next(1, 101);
         }
 
         public int MakeGuess(int guess)
@@ -55,7 +62,7 @@ namespace NumberGuessingGame.Models
         
         public SecretNumber()
         {
-            // EMPTY!
+            Initialize();
         }
     }
 
@@ -63,7 +70,5 @@ namespace NumberGuessingGame.Models
     {
         public int? Number;
         private Outcome Outcome;
-    }
-
-    
+    }   
 }
